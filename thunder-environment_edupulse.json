@@ -1,0 +1,32 @@
+{
+  "client": "Thunder Client",
+  "environmentName": "EduPulse Local Environment",
+  "dateExported": "2026-09-17T18:15:00.000Z",
+  "version": "1.1",
+  "variables": [
+    {
+      "name": "baseUrl",
+      "value": "http://localhost:8081"
+    },
+    {
+      "name": "collegeId",
+      "value": "1"
+    },
+    {
+      "name": "branchId",
+      "value": "1"
+    },
+    {
+      "name": "studentRoll",
+      "value": "Y24CD001"
+    },
+    {
+      "name": "studentEmail",
+      "value": "y24cd001@rvrjc.ac.in"
+    },
+    {
+      "name": "testUserId",
+      "value": "84"
+    }
+  ]
+}

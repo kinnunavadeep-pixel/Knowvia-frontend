@@ -1,0 +1,164 @@
+### ==============================================================================
+### EDUPULSE CAMPUS SOCIAL APPLICATION - API TEST SUITE
+### Built for VS Code REST Client (100% Free & Open-Source Forever)
+### Click "Send Request" above any block to execute!
+### ==============================================================================
+
+@baseUrl = http://localhost:8081
+@collegeId = 1
+@branchId = 1
+@studentRoll = Y24CD001
+@studentEmail = y24cd001@rvrjc.ac.in
+@testUserId = 84
+@testPostId = 1
+
+### ------------------------------------------------------------------------------
+### 1. AUTHENTICATION & SECURITY
+### ------------------------------------------------------------------------------
+
+### 1.1 Login with Roll Number & Password
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "{{studentRoll}}",
+  "password": "BrandNewPass@2026"
+}
+
+### 1.2 Register New Student (Matches College Roster)
+# Note: In EduPulse, each student can only be registered once.
+# If already registered, it returns 400 "ALREADY_REGISTERED".
+# Next available unregistered students: Y24CD006, Y24CD006, Y24CD007
+POST {{baseUrl}}/api/auth/register-student
+Content-Type: application/json
+
+{
+  "rollNumber": "Y24CD006",
+  "email": "Y24CD006@rvrjc.ac.in",
+  "password": "SecurePassword@2026"
+}
+
+### 1.3 Forgot Password - Send Real OTP to College Email
+POST {{baseUrl}}/api/auth/forgot-password/send-otp
+Content-Type: application/json
+
+{
+  "identifier": "{{studentRoll}}"
+}
+
+### 1.4 Forgot Password - Verify 6-Digit Email OTP
+# Note: Enter the actual 6-digit code received in the email from 1.3
+POST {{baseUrl}}/api/auth/forgot-password/verify-otp
+Content-Type: application/json
+
+{
+  "email": "{{studentEmail}}",
+  "otp": "123456"
+}
+
+### 1.5 Get All Registered Users Directory
+GET {{baseUrl}}/api/auth/users
+
+### 1.6 Inspect Database Schema
+GET {{baseUrl}}/api/auth/inspect-db
+
+
+### ------------------------------------------------------------------------------
+### 2. CAMPUS FEED & POSTS
+### ------------------------------------------------------------------------------
+
+### 2.1 Get College-Wide Feed
+GET {{baseUrl}}/api/posts/college-feed?collegeId={{collegeId}}
+
+### 2.2 Get Branch-Isolated Feed (Branch 1 - CSD)
+GET {{baseUrl}}/api/posts/branch-feed?collegeId={{collegeId}}&branchId={{branchId}}
+
+### 2.3 Create Text Post
+POST {{baseUrl}}/api/posts/create
+Content-Type: application/x-www-form-urlencoded
+
+collegeId={{collegeId}}&targetBranchId={{branchId}}&authorId={{testUserId}}&content=Excited+for+the+upcoming+hackathon!
+
+
+### ------------------------------------------------------------------------------
+### 3. INSTAGRAM-STYLE SOCIAL INTERACTIONS (Targeting Post #1)
+### ------------------------------------------------------------------------------
+
+### 3.1 Toggle Heart Like
+POST {{baseUrl}}/api/social/posts/{{testPostId}}/like?userId={{testUserId}}
+
+### 3.2 Add Comment to Post
+POST {{baseUrl}}/api/social/posts/{{testPostId}}/comments
+Content-Type: application/x-www-form-urlencoded
+
+userId={{testUserId}}&commentText=Great+project!+Looking+forward+to+this.
+
+### 3.3 Get Comments Thread
+GET {{baseUrl}}/api/social/posts/{{testPostId}}/comments
+
+### 3.4 Toggle Bookmark / Save Post
+POST {{baseUrl}}/api/social/posts/{{testPostId}}/bookmark?userId={{testUserId}}
+
+### 3.5 Get Saved Bookmarks
+GET {{baseUrl}}/api/social/bookmarks?userId={{testUserId}}
+
+### 3.6 Track Share
+POST {{baseUrl}}/api/social/posts/{{testPostId}}/share?userId={{testUserId}}
+
+### 3.7 Get Live Post Stats (Likes, Comments, Shares)
+GET {{baseUrl}}/api/social/posts/{{testPostId}}/stats?userId={{testUserId}}
+
+
+### ------------------------------------------------------------------------------
+### 4. VIDEO REELS ENGINE
+### ------------------------------------------------------------------------------
+
+### 4.1 Get All Video Reels
+GET {{baseUrl}}/api/reels/all?collegeId={{collegeId}}
+
+### 4.2 Filter Reels by Category (TECHNICAL)
+GET {{baseUrl}}/api/reels/filter?collegeId={{collegeId}}&type=TECHNICAL
+
+
+### ------------------------------------------------------------------------------
+### 5. NOTIFICATIONS HUB
+### ------------------------------------------------------------------------------
+
+### 5.1 Get User Notification Feed
+GET {{baseUrl}}/api/notifications/user/{{testUserId}}
+
+### 5.2 Mark All Notifications as Read
+PUT {{baseUrl}}/api/notifications/mark-all-read/{{testUserId}}
+
+
+### ------------------------------------------------------------------------------
+### 6. PROFILES & PORTFOLIO
+### ------------------------------------------------------------------------------
+
+### 6.1 Get Student Activities
+GET {{baseUrl}}/api/profile/student/{{testUserId}}/activities
+
+### 6.2 Get Student Certifications
+GET {{baseUrl}}/api/profile/student/{{testUserId}}/certifications
+
+
+### ------------------------------------------------------------------------------
+### 7. EVENTS & OPPORTUNITIES HUB
+### ------------------------------------------------------------------------------
+
+### 7.1 Get All Campus Events
+GET {{baseUrl}}/api/events/all
+
+### 7.2 Filter Events by Category (Hackathons)
+GET {{baseUrl}}/api/events/category?category=Hackathons
+
+### 7.3 Search Events by Query / Keyword
+GET {{baseUrl}}/api/events/search?query=hackathon
+
+
+### ------------------------------------------------------------------------------
+### 8. PRIVATE BRANCH NOTICEBOARD
+### ------------------------------------------------------------------------------
+
+### 8.1 Get Branch Private Circulars (Branch 1 - CSD)
+GET {{baseUrl}}/api/notices/my-branch?branchId={{branchId}}

@@ -1,0 +1,13 @@
+﻿global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: 'edupulse-backend'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 2s
+    static_configs:
+      - targets: ['localhost:8081']
+        labels:
+          application: 'edupulse'
+          environment: 'production'

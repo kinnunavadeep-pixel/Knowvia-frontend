@@ -1,0 +1,134 @@
+﻿{
+  "client": "Thunder Client",
+  "collectionName": "EduPulse 1 - Auth & Feed (Free)",
+  "dateExported": "2026-09-18T00:22:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "fld_auth",
+      "name": "1. Authentication & Security",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 10000
+    },
+    {
+      "_id": "fld_feed",
+      "name": "2. Campus Feed & Posts",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 20000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_auth_login",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "User Login (Roll No / Email)",
+      "url": "http://localhost:8081/api/auth/login",
+      "method": "POST",
+      "sortNum": 10100,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"identifier\": \"Y24CD001\",\n  \"password\": \"BrandNewPass@2026\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_reg_student",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "Student Registration (Roster Match)",
+      "url": "http://localhost:8081/api/auth/register-student",
+      "method": "POST",
+      "sortNum": 10200,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"rollNumber\": \"Y24CD002\",\n  \"email\": \"y24cd002@rvrjc.ac.in\",\n  \"password\": \"SecurePassword@2026\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_send_otp",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "Forgot Password - Send Email OTP",
+      "url": "http://localhost:8081/api/auth/forgot-password/send-otp",
+      "method": "POST",
+      "sortNum": 10300,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"identifier\": \"Y24CD001\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_verify_otp",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "Forgot Password - Verify 6-Digit OTP",
+      "url": "http://localhost:8081/api/auth/forgot-password/verify-otp",
+      "method": "POST",
+      "sortNum": 10400,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"y24cd001@rvrjc.ac.in\",\n  \"otp\": \"123456\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_all_users",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "Get All Users Directory",
+      "url": "http://localhost:8081/api/auth/users",
+      "method": "GET",
+      "sortNum": 10700
+    },
+    {
+      "_id": "req_auth_inspect_db",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_auth",
+      "name": "Inspect MySQL Database Schema",
+      "url": "http://localhost:8081/api/auth/inspect-db",
+      "method": "GET",
+      "sortNum": 10800
+    },
+    {
+      "_id": "req_feed_college",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_feed",
+      "name": "Get College-Wide Feed",
+      "url": "http://localhost:8081/api/posts/college-feed?collegeId=1",
+      "method": "GET",
+      "sortNum": 20100
+    },
+    {
+      "_id": "req_feed_branch",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_feed",
+      "name": "Get Branch-Isolated Feed",
+      "url": "http://localhost:8081/api/posts/branch-feed?collegeId=1&branchId=1",
+      "method": "GET",
+      "sortNum": 20200
+    },
+    {
+      "_id": "req_feed_create_post",
+      "colId": "col_edupulse_1",
+      "containerId": "fld_feed",
+      "name": "Create Post (Text & Media)",
+      "url": "http://localhost:8081/api/posts/create",
+      "method": "POST",
+      "sortNum": 20300,
+      "body": {
+        "type": "formencoded",
+        "form": [
+          { "name": "collegeId", "value": "1" },
+          { "name": "targetBranchId", "value": "1" },
+          { "name": "authorId", "value": "84" },
+          { "name": "content", "value": "Excited for the upcoming campus hackathon!" }
+        ]
+      }
+    }
+  ]
+}

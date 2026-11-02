@@ -1,0 +1,56 @@
+﻿[
+    {
+        "Endpoint":  "/api/posts/college-feed?collegeId=1",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    },
+    {
+        "Endpoint":  "/api/reels/all?collegeId=1",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    },
+    {
+        "Endpoint":  "/api/events/all",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    },
+    {
+        "Endpoint":  "/api/social/posts/1/stats",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    },
+    {
+        "Endpoint":  "/api/notifications/user/84",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    },
+    {
+        "Endpoint":  "/api/auth/users",
+        "HttpStatus":  200,
+        "ClickjackingProtected":  true,
+        "MimeSniffingProtected":  true,
+        "CspEnabled":  true,
+        "CredentialsProtected":  true,
+        "AuditStatus":  "PASS"
+    }
+]

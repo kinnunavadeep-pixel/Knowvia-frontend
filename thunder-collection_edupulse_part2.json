@@ -1,0 +1,144 @@
+﻿{
+  "client": "Thunder Client",
+  "collectionName": "EduPulse 2 - Social & Reels (Free)",
+  "dateExported": "2026-09-18T00:22:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "fld_social",
+      "name": "3. Instagram Social Actions",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 30000
+    },
+    {
+      "_id": "fld_reels",
+      "name": "4. Video Reels Engine",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 40000
+    },
+    {
+      "_id": "fld_notif",
+      "name": "5. Notifications & Hub",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 50000
+    },
+    {
+      "_id": "fld_profile",
+      "name": "6. Profiles & Portfolio",
+      "containerId": "",
+      "created": "2026-09-18",
+      "sortNum": 60000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_social_toggle_like",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Toggle Heart Like on Post",
+      "url": "http://localhost:8081/api/social/posts/5/like?userId=84",
+      "method": "POST",
+      "sortNum": 30100
+    },
+    {
+      "_id": "req_social_add_comment",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Add Comment to Post",
+      "url": "http://localhost:8081/api/social/posts/5/comments",
+      "method": "POST",
+      "sortNum": 30200,
+      "body": {
+        "type": "formencoded",
+        "form": [
+          { "name": "userId", "value": "84" },
+          { "name": "commentText", "value": "Great project! Looking forward to this." }
+        ]
+      }
+    },
+    {
+      "_id": "req_social_get_comments",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Get Post Comments Thread",
+      "url": "http://localhost:8081/api/social/posts/5/comments",
+      "method": "GET",
+      "sortNum": 30300
+    },
+    {
+      "_id": "req_social_toggle_save",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Toggle Bookmark / Save Post",
+      "url": "http://localhost:8081/api/social/posts/5/bookmark?userId=84",
+      "method": "POST",
+      "sortNum": 30400
+    },
+    {
+      "_id": "req_social_get_bookmarks",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Get User Saved Bookmarks",
+      "url": "http://localhost:8081/api/social/bookmarks?userId=84",
+      "method": "GET",
+      "sortNum": 30500
+    },
+    {
+      "_id": "req_social_stats",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_social",
+      "name": "Get Live Post Stats",
+      "url": "http://localhost:8081/api/social/posts/5/stats?userId=84",
+      "method": "GET",
+      "sortNum": 30700
+    },
+    {
+      "_id": "req_reels_all",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_reels",
+      "name": "Get All Video Reels",
+      "url": "http://localhost:8081/api/reels/all?collegeId=1",
+      "method": "GET",
+      "sortNum": 40100
+    },
+    {
+      "_id": "req_reels_filter",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_reels",
+      "name": "Filter Reels (TECHNICAL)",
+      "url": "http://localhost:8081/api/reels/filter?collegeId=1&type=TECHNICAL",
+      "method": "GET",
+      "sortNum": 40200
+    },
+    {
+      "_id": "req_notif_user",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_notif",
+      "name": "Get Student Notifications Feed",
+      "url": "http://localhost:8081/api/notifications/user/84",
+      "method": "GET",
+      "sortNum": 50100
+    },
+    {
+      "_id": "req_notif_mark_all_read",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_notif",
+      "name": "Mark All Notifications Read",
+      "url": "http://localhost:8081/api/notifications/mark-all-read/84",
+      "method": "PUT",
+      "sortNum": 50300
+    },
+    {
+      "_id": "req_profile_activities",
+      "colId": "col_edupulse_2",
+      "containerId": "fld_profile",
+      "name": "Get Student Activities",
+      "url": "http://localhost:8081/api/profile/student/84/activities",
+      "method": "GET",
+      "sortNum": 60100
+    }
+  ]
+}

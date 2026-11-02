@@ -1,0 +1,346 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "EduPulse API Master Collection",
+  "dateExported": "2026-09-17T18:15:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "fld_auth",
+      "name": "1. Authentication & Security",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 10000
+    },
+    {
+      "_id": "fld_feed",
+      "name": "2. Campus Feed & Posts",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 20000
+    },
+    {
+      "_id": "fld_social",
+      "name": "3. Instagram Social Actions",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 30000
+    },
+    {
+      "_id": "fld_reels",
+      "name": "4. Video Reels Engine",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 40000
+    },
+    {
+      "_id": "fld_notif",
+      "name": "5. Notifications & Push Hub",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 50000
+    },
+    {
+      "_id": "fld_profile",
+      "name": "6. Profiles & Portfolio",
+      "containerId": "",
+      "created": "2026-09-17",
+      "sortNum": 60000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_auth_login",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "User Login (Roll No / Email)",
+      "url": "{{baseUrl}}/api/auth/login",
+      "method": "POST",
+      "sortNum": 10100,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"identifier\": \"{{studentRoll}}\",\n  \"password\": \"BrandNewPass@2026\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_reg_student",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Student Registration (Roster Match)",
+      "url": "{{baseUrl}}/api/auth/register-student",
+      "method": "POST",
+      "sortNum": 10200,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"rollNumber\": \"Y24CD002\",\n  \"email\": \"y24cd002@rvrjc.ac.in\",\n  \"password\": \"SecurePassword@2026\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_send_otp",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Forgot Password - Send Email OTP",
+      "url": "{{baseUrl}}/api/auth/forgot-password/send-otp",
+      "method": "POST",
+      "sortNum": 10300,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"identifier\": \"{{studentRoll}}\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_verify_otp",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Forgot Password - Verify 6-Digit OTP",
+      "url": "{{baseUrl}}/api/auth/forgot-password/verify-otp",
+      "method": "POST",
+      "sortNum": 10400,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{studentEmail}}\",\n  \"otp\": \"123456\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_reset_pwd",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Forgot Password - Set New Password",
+      "url": "{{baseUrl}}/api/auth/forgot-password/reset",
+      "method": "POST",
+      "sortNum": 10500,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"{{studentEmail}}\",\n  \"otp\": \"123456\",\n  \"newPassword\": \"BrandNewPass@2026\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_outsider_otp",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Outsider Login - Send Phone OTP",
+      "url": "{{baseUrl}}/api/auth/outsider/send-otp",
+      "method": "POST",
+      "sortNum": 10600,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"phoneNumber\": \"9876543210\"\n}"
+      }
+    },
+    {
+      "_id": "req_auth_all_users",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Get All Users Directory",
+      "url": "{{baseUrl}}/api/auth/users",
+      "method": "GET",
+      "sortNum": 10700
+    },
+    {
+      "_id": "req_auth_inspect_db",
+      "colId": "col_edupulse",
+      "containerId": "fld_auth",
+      "name": "Inspect MySQL Database Schema",
+      "url": "{{baseUrl}}/api/auth/inspect-db",
+      "method": "GET",
+      "sortNum": 10800
+    },
+    {
+      "_id": "req_feed_college",
+      "colId": "col_edupulse",
+      "containerId": "fld_feed",
+      "name": "Get College-Wide Feed",
+      "url": "{{baseUrl}}/api/posts/college-feed?collegeId={{collegeId}}",
+      "method": "GET",
+      "sortNum": 20100
+    },
+    {
+      "_id": "req_feed_branch",
+      "colId": "col_edupulse",
+      "containerId": "fld_feed",
+      "name": "Get Branch-Isolated Feed",
+      "url": "{{baseUrl}}/api/posts/branch-feed?collegeId={{collegeId}}&branchId={{branchId}}",
+      "method": "GET",
+      "sortNum": 20200
+    },
+    {
+      "_id": "req_feed_create_post",
+      "colId": "col_edupulse",
+      "containerId": "fld_feed",
+      "name": "Create Post (Text & Media)",
+      "url": "{{baseUrl}}/api/posts/create",
+      "method": "POST",
+      "sortNum": 20300,
+      "body": {
+        "type": "formencoded",
+        "form": [
+          { "name": "collegeId", "value": "{{collegeId}}" },
+          { "name": "targetBranchId", "value": "{{branchId}}" },
+          { "name": "authorId", "value": "{{testUserId}}" },
+          { "name": "content", "value": "Excited for the upcoming campus hackathon!" }
+        ]
+      }
+    },
+    {
+      "_id": "req_feed_delete_post",
+      "colId": "col_edupulse",
+      "containerId": "fld_feed",
+      "name": "Delete Post by ID",
+      "url": "{{baseUrl}}/api/posts/delete/5",
+      "method": "DELETE",
+      "sortNum": 20400
+    },
+    {
+      "_id": "req_social_toggle_like",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Toggle Heart Like on Post",
+      "url": "{{baseUrl}}/api/social/posts/5/like?userId={{testUserId}}",
+      "method": "POST",
+      "sortNum": 30100
+    },
+    {
+      "_id": "req_social_add_comment",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Add Comment to Post",
+      "url": "{{baseUrl}}/api/social/posts/5/comments",
+      "method": "POST",
+      "sortNum": 30200,
+      "body": {
+        "type": "formencoded",
+        "form": [
+          { "name": "userId", "value": "{{testUserId}}" },
+          { "name": "commentText", "value": "Great project! Looking forward to this." }
+        ]
+      }
+    },
+    {
+      "_id": "req_social_get_comments",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Get Post Comments Thread",
+      "url": "{{baseUrl}}/api/social/posts/5/comments",
+      "method": "GET",
+      "sortNum": 30300
+    },
+    {
+      "_id": "req_social_toggle_save",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Toggle Bookmark / Save Post",
+      "url": "{{baseUrl}}/api/social/posts/5/bookmark?userId={{testUserId}}",
+      "method": "POST",
+      "sortNum": 30400
+    },
+    {
+      "_id": "req_social_get_bookmarks",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Get User Saved Bookmarks",
+      "url": "{{baseUrl}}/api/social/bookmarks?userId={{testUserId}}",
+      "method": "GET",
+      "sortNum": 30500
+    },
+    {
+      "_id": "req_social_share",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Track Post Share",
+      "url": "{{baseUrl}}/api/social/posts/5/share?userId={{testUserId}}",
+      "method": "POST",
+      "sortNum": 30600
+    },
+    {
+      "_id": "req_social_stats",
+      "colId": "col_edupulse",
+      "containerId": "fld_social",
+      "name": "Get Live Post Stats (Likes, Shares)",
+      "url": "{{baseUrl}}/api/social/posts/5/stats?userId={{testUserId}}",
+      "method": "GET",
+      "sortNum": 30700
+    },
+    {
+      "_id": "req_reels_all",
+      "colId": "col_edupulse",
+      "containerId": "fld_reels",
+      "name": "Get All Video Reels",
+      "url": "{{baseUrl}}/api/reels/all?collegeId={{collegeId}}",
+      "method": "GET",
+      "sortNum": 40100
+    },
+    {
+      "_id": "req_reels_filter",
+      "colId": "col_edupulse",
+      "containerId": "fld_reels",
+      "name": "Filter Reels (TECHNICAL vs CULTURAL)",
+      "url": "{{baseUrl}}/api/reels/filter?collegeId={{collegeId}}&type=TECHNICAL",
+      "method": "GET",
+      "sortNum": 40200
+    },
+    {
+      "_id": "req_notif_user",
+      "colId": "col_edupulse",
+      "containerId": "fld_notif",
+      "name": "Get Student Notifications Feed",
+      "url": "{{baseUrl}}/api/notifications/user/{{testUserId}}",
+      "method": "GET",
+      "sortNum": 50100
+    },
+    {
+      "_id": "req_notif_mark_read",
+      "colId": "col_edupulse",
+      "containerId": "fld_notif",
+      "name": "Mark Single Notification Read",
+      "url": "{{baseUrl}}/api/notifications/mark-read/1",
+      "method": "PUT",
+      "sortNum": 50200
+    },
+    {
+      "_id": "req_notif_mark_all_read",
+      "colId": "col_edupulse",
+      "containerId": "fld_notif",
+      "name": "Mark All Notifications Read",
+      "url": "{{baseUrl}}/api/notifications/mark-all-read/{{testUserId}}",
+      "method": "PUT",
+      "sortNum": 50300
+    },
+    {
+      "_id": "req_notif_register_fcm",
+      "colId": "col_edupulse",
+      "containerId": "fld_notif",
+      "name": "Register Android FCM Device Token",
+      "url": "{{baseUrl}}/api/notifications/register-token",
+      "method": "POST",
+      "sortNum": 50400,
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"userId\": {{testUserId}},\n  \"collegeId\": \"{{collegeId}}\",\n  \"branchId\": \"{{branchId}}\",\n  \"fcmToken\": \"sample_fcm_token_xyz\",\n  \"deviceType\": \"ANDROID\"\n}"
+      }
+    },
+    {
+      "_id": "req_profile_activities",
+      "colId": "col_edupulse",
+      "containerId": "fld_profile",
+      "name": "Get Student Activities",
+      "url": "{{baseUrl}}/api/profile/student/{{testUserId}}/activities",
+      "method": "GET",
+      "sortNum": 60100
+    },
+    {
+      "_id": "req_profile_certs",
+      "colId": "col_edupulse",
+      "containerId": "fld_profile",
+      "name": "Get Student Certifications",
+      "url": "{{baseUrl}}/api/profile/student/{{testUserId}}/certifications",
+      "method": "GET",
+      "sortNum": 60200
+    }
+  ]
+}
